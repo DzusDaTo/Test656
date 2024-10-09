@@ -1,0 +1,23 @@
+version: '3.8'
+
+services:
+  web:
+    image: python:3.11-slim
+    container_name: django_app
+    restart: always
+    build:
+      context: .
+      dockerfile: Dockerfile
+    working_dir: /app
+    volumes:
+      - .:/app
+      - ./db:/app/db
+    ports:
+      - "8000:8000"
+    environment:
+      - DJANGO_SETTINGS_MODULE=cat_service.settings
+    command: python manage.py runserver 0.0.0.0:8000
+
+volumes:
+  db:
+    driver: local
