@@ -10,6 +10,8 @@ COPY requirements.txt /app/
 RUN pip install --upgrade pip && \
     pip install -r requirements.txt
 
+COPY . /app/
+
 RUN mkdir -p /app/db
 
 EXPOSE 8000

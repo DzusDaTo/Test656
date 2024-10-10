@@ -23,7 +23,7 @@ class MessageConsumer(AsyncWebsocketConsumer):
 
     async def receive(self, text_data):
         text_data_json = json.loads(text_data)
-        message = text_data_json['message']
+        message = text_data_json['text']
 
         # Отправляем сообщение в группу
         await self.channel_layer.group_send(
